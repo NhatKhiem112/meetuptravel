@@ -1,0 +1,14 @@
+FROM node:20-alpine
+
+# Install Docker
+RUN apk add --no-cache docker docker-compose
+
+WORKDIR /app
+
+COPY . .
+
+# Make run.sh executable
+RUN chmod +x run.sh
+
+# Start the application
+CMD ["./run.sh"] 

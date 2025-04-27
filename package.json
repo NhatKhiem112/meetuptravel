@@ -2,15 +2,13 @@
   "name": "meetuptravel",
   "version": "1.0.0",
   "description": "MeetupTravel Application",
-  "main": "index.js",
   "private": true,
   "engines": {
     "node": ">=14.0.0"
   },
   "scripts": {
-    "start": "docker-compose up -d",
-    "build": "docker-compose build",
-    "test": "echo \"No tests specified\" && exit 0"
+    "start": "sh run.sh",
+    "build": "echo 'Building MeetupTravel Application'"
   },
   "repository": {
     "type": "git",
@@ -23,7 +21,7 @@
     "react"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "meetuptravel": "file:"
   }
