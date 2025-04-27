@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Starting Health Check Server..."
+echo "Starting MeetupTravel Application..."
 
 # Ensure we have executable permissions
 chmod +x $(dirname $0)/run.sh
@@ -9,10 +9,16 @@ chmod +x $(dirname $0)/run.sh
 echo "Checking environment variables..."
 env
 
-# Install dependencies for health check server
+# Install dependencies
 echo "Installing dependencies..."
-npm install express
+npm install
 
-# Start health check server directly
-echo "Starting health check server..."
+# Run database setup if needed
+if [ "$SETUP_DB" = "true" ]; then
+  echo "Setting up database..."
+  node setup-db.js
+fi
+
+# Start health check server
+echo "Starting application server..."
 node app.js 

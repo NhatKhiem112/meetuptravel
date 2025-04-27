@@ -1,23 +1,27 @@
 {
-  "name": "healthcheck-server",
+  "name": "meetuptravel",
   "version": "1.0.0",
-  "description": "Health Check Server for Railway",
+  "description": "MeetupTravel Application with Health Check Server",
   "private": true,
   "engines": {
     "node": ">=14.0.0"
   },
   "scripts": {
     "start": "node app.js",
-    "build": "echo 'No build step required'"
+    "build": "echo 'Building MeetupTravel Application'",
+    "setup-db": "node setup-db.js"
   },
   "keywords": [
     "healthcheck",
-    "railway"
+    "railway",
+    "meetuptravel"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.18.2",
-    "healthcheck-server": "file:"
+    "meetuptravel": "file:",
+    "mysql2": "^3.9.2"
   }
 }
