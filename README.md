@@ -8,6 +8,7 @@
 - `frontend/`: Ứng dụng React frontend
 - `frontend-admin/`: Panel quản trị dựa trên React
 - `mysql/`: Cấu hình và dữ liệu MySQL
+- `app.js`: Máy chủ kiểm tra sức khỏe (health check)
 
 ## Triển khai trên Railway
 
@@ -19,27 +20,13 @@
 4. Kết nối với GitHub repository của bạn
 5. Railway sẽ tự động phát hiện cấu hình Docker và bắt đầu triển khai
 
-### Phương pháp 2: Triển khai từ CLI
+### Sửa lỗi Healthcheck Failed
 
-1. Cài đặt Railway CLI:
-   ```bash
-   npm i -g @railway/cli
-   ```
+Nếu bạn gặp lỗi "Healthcheck Failed", hãy thử các bước sau:
 
-2. Đăng nhập vào Railway từ CLI:
-   ```bash
-   railway login
-   ```
-
-3. Liên kết dự án với Railway:
-   ```bash
-   railway link
-   ```
-
-4. Triển khai dự án:
-   ```bash
-   railway up
-   ```
+1. Kiểm tra cổng kiểm tra sức khỏe (mặc định là 8000) trong cài đặt Railway
+2. Đảm bảo rằng điểm cuối kiểm tra sức khỏe ("/") đang phản hồi với mã trạng thái 200
+3. Tăng thời gian chờ kiểm tra sức khỏe trong cài đặt Railway (ví dụ: 600 giây)
 
 ## Biến môi trường
 
@@ -53,6 +40,7 @@ Railway sẽ tự động phát hiện các biến môi trường từ `docker-c
 - `FRONTEND_PORT`: Port cho frontend
 - `BACKEND_PORT`: Port cho backend
 - `ADMIN_PORT`: Port cho admin panel
+- `HEALTHCHECK_PORT`: Port cho máy chủ kiểm tra sức khỏe (mặc định 8000)
 
 ## Theo dõi và quản lý
 

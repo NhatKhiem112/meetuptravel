@@ -1,6 +1,21 @@
 version: '3.8'
 
 services:
+  healthcheck:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "${HEALTHCHECK_PORT:-8000}:8000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    depends_on:
+      - frontend
+      - admin
+      - backend
+      - mysql
+
   mysql:
     image: mysql:8.0
     ports:

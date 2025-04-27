@@ -3,4 +3,7 @@ builder = "nixpacks"
 
 [deploy]
 startCommand = "sh run.sh"
-restartPolicyType = "ALWAYS" 
+restartPolicyType = "ALWAYS"
+healthcheckPath = "/"
+healthcheckTimeout = 600
+healthcheckProtocol = "http" 

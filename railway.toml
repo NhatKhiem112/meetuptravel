@@ -3,9 +3,10 @@ builder = "nixpacks"
 buildCommand = "echo 'Building multi-component application'"
 
 [deploy]
-startCommand = "docker-compose up -d"
+startCommand = "sh run.sh"
 healthcheckPath = "/"
-healthcheckTimeout = 300
+healthcheckTimeout = 600
+healthcheckPort = 8000
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
 
