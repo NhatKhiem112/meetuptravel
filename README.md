@@ -1,56 +1,42 @@
-# MeetupTravel
+# MeetupTravel - Railway Healthcheck Server
 
-Ứng dụng web du lịch với các tính năng kết nối người dùng và chia sẻ trải nghiệm du lịch.
+Máy chủ kiểm tra sức khỏe đơn giản để triển khai trên Railway.
+
+## Thông tin
+
+Dự án này chứa một máy chủ Express đơn giản để kiểm tra sức khỏe trên Railway. Máy chủ này luôn trả về trạng thái 200 OK để đảm bảo rằng Railway có thể xác định rằng ứng dụng đang hoạt động bình thường.
 
 ## Cấu trúc dự án
 
-- `backend/`: Ứng dụng Spring Boot backend
-- `frontend/`: Ứng dụng React frontend
-- `frontend-admin/`: Panel quản trị dựa trên React
-- `mysql/`: Cấu hình và dữ liệu MySQL
-- `app.js`: Máy chủ kiểm tra sức khỏe (health check)
+- `app.js`: Máy chủ kiểm tra sức khỏe
+- `package.json`: Cấu hình Node.js
+- `railway.json`, `.railway.toml`, và các tệp cấu hình Railway khác
 
 ## Triển khai trên Railway
-
-### Phương pháp 1: Triển khai từ GitHub Repository
 
 1. Đăng nhập vào [Railway](https://railway.app/)
 2. Nhấn vào "New Project"
 3. Chọn "Deploy from GitHub Repo"
 4. Kết nối với GitHub repository của bạn
-5. Railway sẽ tự động phát hiện cấu hình Docker và bắt đầu triển khai
+5. Railway sẽ tự động phát hiện cấu hình Node.js và bắt đầu triển khai
 
-### Sửa lỗi Healthcheck Failed
+## Kiểm tra Sức Khỏe
 
-Nếu bạn gặp lỗi "Healthcheck Failed", hãy thử các bước sau:
+Máy chủ cung cấp hai điểm cuối:
 
-1. Kiểm tra cổng kiểm tra sức khỏe (mặc định là 8000) trong cài đặt Railway
-2. Đảm bảo rằng điểm cuối kiểm tra sức khỏe ("/") đang phản hồi với mã trạng thái 200
-3. Tăng thời gian chờ kiểm tra sức khỏe trong cài đặt Railway (ví dụ: 600 giây)
+- `/`: Trả về "OK - Health check passed" với mã trạng thái 200
+- `/info`: Trả về thông tin chi tiết về môi trường và thời gian hoạt động
 
-## Biến môi trường
+## Biến Môi Trường
 
-Railway sẽ tự động phát hiện các biến môi trường từ `docker-compose.yml`. Tuy nhiên, bạn có thể thiết lập các biến môi trường cụ thể trong Railway Dashboard:
+Không có biến môi trường bắt buộc, nhưng bạn có thể đặt:
 
-- `MYSQL_ROOT_PASSWORD`: Mật khẩu root MySQL
-- `MYSQL_DATABASE`: Tên database
-- `MYSQL_USER`: Tên người dùng MySQL
-- `MYSQL_PASSWORD`: Mật khẩu MySQL
-- `SPRING_JPA_HIBERNATE_DDL_AUTO`: Cấu hình Hibernate (update, create, none)
-- `FRONTEND_PORT`: Port cho frontend
-- `BACKEND_PORT`: Port cho backend
-- `ADMIN_PORT`: Port cho admin panel
-- `HEALTHCHECK_PORT`: Port cho máy chủ kiểm tra sức khỏe (mặc định 8000)
+- `PORT`: Cổng để lắng nghe (mặc định: 8000)
+- `NODE_ENV`: Môi trường (mặc định: development)
 
-## Theo dõi và quản lý
+## Kết nối với Dự Án Chính
 
-- Truy cập Railway Dashboard để xem logs, metrics và quản lý ứng dụng
-- Sử dụng Railway CLI để theo dõi logs: `railway logs`
+Sau khi đã triển khai thành công máy chủ kiểm tra sức khỏe này, bạn có thể:
 
-## Mở rộng
-
-Để mở rộng ứng dụng, bạn có thể:
-
-1. Tăng số lượng replicas trong Railway Dashboard
-2. Nâng cấp cấu hình tài nguyên trong Railway Dashboard
-3. Thêm nhiều dịch vụ thông qua Railway Service Definitions 
+1. Triển khai các thành phần khác của dự án MeetupTravel của bạn dưới dạng các dịch vụ riêng biệt
+2. Sử dụng Railway để kết nối các dịch vụ với nhau 

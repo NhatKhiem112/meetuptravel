@@ -1,29 +1,23 @@
 {
-  "name": "meetuptravel",
+  "name": "healthcheck-server",
   "version": "1.0.0",
-  "description": "MeetupTravel Application",
+  "description": "Health Check Server for Railway",
   "private": true,
   "engines": {
     "node": ">=14.0.0"
   },
   "scripts": {
-    "start": "sh run.sh",
-    "build": "echo 'Building MeetupTravel Application'"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yourusername/meetuptravel.git"
+    "start": "node app.js",
+    "build": "echo 'No build step required'"
   },
   "keywords": [
-    "meetuptravel",
-    "travel",
-    "spring-boot",
-    "react"
+    "healthcheck",
+    "railway"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
-    "meetuptravel": "file:"
+    "healthcheck-server": "file:"
   }
 }

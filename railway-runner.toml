@@ -2,5 +2,5 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "docker-compose up -d"
+startCommand = "npm start"
 restartPolicyType = "ALWAYS" 

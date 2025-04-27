@@ -2,8 +2,7 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "sh run.sh"
+startCommand = "npm start"
 restartPolicyType = "ALWAYS"
 healthcheckPath = "/"
-healthcheckTimeout = 600
-healthcheckProtocol = "http" 
+healthcheckTimeout = 300 

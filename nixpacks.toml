@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["docker", "docker-compose"]
+nixPkgs = []
 
 [phases.build]
 cmds = [
@@ -8,4 +8,4 @@ cmds = [
 ]
 
 [start]
-cmd = "sh run.sh" 
+cmd = "npm start" 
