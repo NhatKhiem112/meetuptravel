@@ -1,0 +1,30 @@
+[build]
+builder = "nixpacks"
+buildCommand = "echo 'Building multi-component application'"
+
+[deploy]
+startCommand = "docker-compose up -d"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 10
+
+[services.backend]
+name = "backend"
+internal_port = 8080
+protocol = "http"
+
+[services.frontend]
+name = "frontend"
+internal_port = 80
+protocol = "http"
+
+[services.admin]
+name = "admin"
+internal_port = 8081
+protocol = "http"
+
+[services.database]
+name = "mysql"
+internal_port = 3306
+protocol = "tcp" 

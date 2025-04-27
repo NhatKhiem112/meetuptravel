@@ -1,0 +1,29 @@
+app = "meetuptravel"
+primary_region = "sin"  # Singapore region, change as needed
+
+[build]
+  dockerfile = "./backend/Dockerfile"  # pointing to the backend Dockerfile
+
+[env]
+  SPRING_PROFILES_ACTIVE = "prod"
+  SPRING_JPA_HIBERNATE_DDL_AUTO = "update"
+
+[services]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [[services.http_checks]]
+    interval = "10s"
+    timeout = "2s"
+    grace_period = "5s"
+    method = "get"
+    path = "/actuator/health"
+    protocol = "http" 

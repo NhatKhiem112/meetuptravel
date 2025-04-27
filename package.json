@@ -1,0 +1,30 @@
+{
+  "name": "meetuptravel",
+  "version": "1.0.0",
+  "description": "MeetupTravel Application",
+  "main": "index.js",
+  "private": true,
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "start": "docker-compose up -d",
+    "build": "docker-compose build",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/meetuptravel.git"
+  },
+  "keywords": [
+    "meetuptravel",
+    "travel",
+    "spring-boot",
+    "react"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "meetuptravel": "file:"
+  }
+}

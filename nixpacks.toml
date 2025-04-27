@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["docker", "docker-compose"]
+
+[phases.build]
+cmds = [
+  "echo 'Building MeetupTravel Application'",
+  "docker-compose build"
+]
+
+[start]
+cmd = "docker-compose up -d" 
